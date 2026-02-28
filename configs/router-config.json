@@ -7,12 +7,36 @@
   "API_TIMEOUT_MS": 600000,
   "Providers": [
     {
+      "name": "gemini",
+      "api_base_url": "https://generativelanguage.googleapis.com/v1beta/chat/completions",
+      "api_key": "$GEMINI_API_KEY",
+      "models": [
+        "gemini-1.5-pro",
+        "gemini-2.0-flash-exp"
+      ],
+      "transformer": {
+        "use": [
+          "gemini"
+        ]
+      }
+    },
+    {
       "name": "openai",
       "api_base_url": "https://api.openai.com/v1/chat/completions",
       "api_key": "$OPENAI_API_KEY",
-      "models": ["gpt-5.2", "gpt-5-mini"],
+      "models": [
+        "gpt-4o",
+        "gpt-4o-mini"
+      ],
       "transformer": {
-        "use": [["maxcompletiontokens", { "max_completion_tokens": 16384 }]]
+        "use": [
+          [
+            "maxcompletiontokens",
+            {
+              "max_completion_tokens": 16384
+            }
+          ]
+        ]
       }
     },
     {
@@ -20,10 +44,12 @@
       "api_base_url": "https://openrouter.ai/api/v1/chat/completions",
       "api_key": "$OPENROUTER_API_KEY",
       "models": [
-        "google/gemini-3-flash-preview"
+        "google/gemini-2.0-flash-001"
       ],
       "transformer": {
-        "use": ["openrouter"]
+        "use": [
+          "openrouter"
+        ]
       }
     }
   ],
